@@ -1,19 +1,5 @@
-"""
-   ==============================================================
-   * UNIFAL = Universidade Federal de Alfenas
-   * BACHARELADO EM CIENCIA DA COMPUTACAO.
-   * Trabalho....: Imagem ASCII
-   * Disciplina..: Processamento de Imagens
-   * Professor...: Luiz Eduardo da Silva
-   * Aluno.......: Lucas Costa Lima Ferreira
-   * Data........: 20/04/2023
-   ==============================================================
-"""
-
-# Comando para executar: python3 arte_ascii.py cao.pgm 100 30 "@$#*%o!=+;:~=,. "
-#import matplotlib.pyplot as plt
-import sys
-import math
+import plotly.express as px
+import pandas as pd
 
 # lê o arquivo .pgm
 def readPgm(name):
@@ -51,12 +37,21 @@ img = readPgm('cao.pgm')
 num_col = len(img[0])
 num_lin = len(img)
 
+# número total de pixels
 total_pixels = num_lin * num_col
 
+# vetor com o histograma nulo
 histograma = [0 for i in range(256)]
 
+# calculando o histograma para cada valor encontrado na imagem
 for i in range(num_lin):
     for j in range(num_col):
         histograma[img[i][j]] += 1
 
-print(histograma[0])
+print(len(histograma))
+
+df = pd.DataFrame(histograma, columns=['frequencia'])
+
+
+fig = px.histogram(df)
+fig.show()
