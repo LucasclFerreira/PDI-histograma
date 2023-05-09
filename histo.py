@@ -1,5 +1,6 @@
 import plotly.express as px
 import pandas as pd
+import math
 
 # lê o arquivo .pgm
 def readPgm(name):
@@ -53,5 +54,15 @@ print(len(histograma))
 df = pd.DataFrame(histograma, columns=['frequencia'])
 
 
-fig = px.histogram(df)
-fig.show()
+#fig = px.histogram(df)
+#fig.show()
+
+
+
+# calculando as probabilidades
+probabilidades = [0 for i in range(256)]
+for i in range(len(histograma)):
+    probabilidades[i] = round((histograma[i] / total_pixels), 3)
+    print(probabilidades[i])
+
+#probabilidades_acumuladas = [0 for i in range(256)] TODO
