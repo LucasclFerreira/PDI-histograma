@@ -44,13 +44,19 @@ def readPgm(name):
     file.close()
     return img
 
-# cria uma matriz para alocar o valores de uma imagem
-def imgAlloc(nl, nc):
-    img = []
-    for i in range(nl):
-        lin = []
-        for j in range(nc):
-            lin.append(0)
-        img.append(lin)
-    return img
+# lendo imagem PGM
+img = readPgm('cao.pgm')
 
+# tamanho da imagem
+num_col = len(img[0])
+num_lin = len(img)
+
+total_pixels = num_lin * num_col
+
+histograma = [0 for i in range(256)]
+
+for i in range(num_lin):
+    for j in range(num_col):
+        histograma[img[i][j]] += 1
+
+print(histograma[0])
