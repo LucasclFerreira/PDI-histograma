@@ -97,3 +97,14 @@ img_equalizada = imgAlloc(num_lin, num_col)
 for i in range(num_lin):
     for j in range(num_col):
         img_equalizada[i][j] = novos_valores[img[i][j]]
+
+# criando nova imagem equalizada
+with open('cao_equalizado.pgm', 'w') as f:
+    f.write('P2\n')
+    f.write('# Created by histo.py\n')
+    f.write(str(num_col) + ' ' + str(num_lin) + '\n')
+    f.write('255\n')
+    for i in range(num_lin):
+        for j in range(num_col):
+            f.write(str(img_equalizada[i][j]) + ' ')
+        f.write('\n')
