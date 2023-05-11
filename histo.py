@@ -75,4 +75,10 @@ novos_valores = [0 for i in range(256)]
 
 for i in range(len(probabilidades_acumuladas)):
     novos_valores[i] = round(probabilidades_acumuladas[i] * 255, 0)
-    print(novos_valores[i])
+    #print(novos_valores[i])
+
+# histograma equalizado
+histograma_equalizado = [0 for i in range(256)]
+for i in range(len(novos_valores)):
+    histograma_equalizado[int(novos_valores[i])] += 1
+    print(histograma_equalizado[int(novos_valores[i])])
