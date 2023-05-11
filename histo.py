@@ -63,6 +63,10 @@ df = pd.DataFrame(histograma, columns=['frequencia'])
 probabilidades = [0 for i in range(256)]
 for i in range(len(histograma)):
     probabilidades[i] = round((histograma[i] / total_pixels), 3)
-    print(probabilidades[i])
 
-#probabilidades_acumuladas = [0 for i in range(256)] TODO
+probabilidades_acumuladas = [0 for i in range(256)]
+probabilidades_acumuladas[0] = probabilidades[0]
+
+for i in range(1, len(probabilidades)):
+    probabilidades_acumuladas[i] = probabilidades_acumuladas[i - 1] + probabilidades[i]
+    print(probabilidades_acumuladas[i])
