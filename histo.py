@@ -90,13 +90,13 @@ for i in range(len(probabilidades_acumuladas)):
 histograma_equalizado = [0 for i in range(256)]
 for i in range(len(novos_valores)):
     histograma_equalizado[int(novos_valores[i])] += 1
-    print(histograma_equalizado[int(novos_valores[i])])
+    #print(histograma_equalizado[int(novos_valores[i])])
 
 # novo imagem equalizada
 img_equalizada = imgAlloc(num_lin, num_col)
 for i in range(num_lin):
     for j in range(num_col):
-        img_equalizada[i][j] = novos_valores[img[i][j]]
+        img_equalizada[i][j] = int(novos_valores[img[i][j]])
 
 # criando nova imagem equalizada
 with open('cao_equalizado.pgm', 'w') as f:
