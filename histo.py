@@ -69,4 +69,10 @@ probabilidades_acumuladas[0] = probabilidades[0]
 
 for i in range(1, len(probabilidades)):
     probabilidades_acumuladas[i] = probabilidades_acumuladas[i - 1] + probabilidades[i]
-    print(probabilidades_acumuladas[i])
+    #print(probabilidades_acumuladas[i])
+
+novos_valores = [0 for i in range(256)]
+
+for i in range(len(probabilidades_acumuladas)):
+    novos_valores[i] = round(probabilidades_acumuladas[i] * 255, 0)
+    print(novos_valores[i])
