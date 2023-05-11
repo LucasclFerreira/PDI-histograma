@@ -31,6 +31,15 @@ def readPgm(name):
     file.close()
     return img
 
+def imgAlloc(nl, nc):
+    img = []
+    for i in range(nl):
+        lin = []
+        for j in range(nc):
+            lin.append(0)
+        img.append(lin)
+    return img
+
 # lendo imagem PGM
 img = readPgm('cao.pgm')
 
@@ -82,3 +91,9 @@ histograma_equalizado = [0 for i in range(256)]
 for i in range(len(novos_valores)):
     histograma_equalizado[int(novos_valores[i])] += 1
     print(histograma_equalizado[int(novos_valores[i])])
+
+# novo imagem equalizada
+img_equalizada = imgAlloc(num_lin, num_col)
+for i in range(num_lin):
+    for j in range(num_col):
+        img_equalizada[i][j] = novos_valores[img[i][j]]
